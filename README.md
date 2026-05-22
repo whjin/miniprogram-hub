@@ -1,2 +1,3 @@
-# miniprogram-hub
-小程序应用
+## 项目合集
+
+1. 值班巡检助手：`inspectDuty`
