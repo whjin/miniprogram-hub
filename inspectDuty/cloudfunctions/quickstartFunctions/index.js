@@ -15,6 +15,37 @@ const getOpenId = async () => {
   };
 };
 
+// 获取当前登录用户信息
+const getLoginUserInfo = async () => {
+  try {
+    const { OPENID, UNIONID, APPID } = cloud.getWXContext();
+
+    const userResult = await db
+      .collection("users")
+      .where({ _openid: OPENID })
+      .limit(1)
+      .get();
+
+    return {
+      success: true,
+      identity: {
+        openid: OPENID,
+        unionid: UNIONID,
+        appid: APPID,
+      },
+
+      userInfo: userResult.data.length > 0 ? userResult.data[0] : null,
+      msg: userResult.data.length > 0 ? "获取成功" : "用户未注册",
+    };
+  } catch (err) {
+    return {
+      success: false,
+      errMsg: err.message,
+      msg: "获取失败",
+    };
+  }
+};
+
 // 获取小程序二维码
 const getMiniProgramCode = async () => {
   // 获取小程序二维码的buffer
@@ -181,5 +212,8 @@ exports.main = async (event, context) => {
       return await insertRecord(event);
     case "deleteRecord":
       return await deleteRecord(event);
+    // 获取登录用户信息
+    case "getLoginUserInfo":
+      return await getLoginUserInfo();
   }
 };
