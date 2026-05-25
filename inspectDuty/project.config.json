@@ -1,41 +1,85 @@
 {
-  "compileType": "miniprogram",
-  "libVersion": "trial",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "coverView": true,
-    "es6": false,
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
     "postcss": true,
+    "preloadBackgroundData": false,
     "minified": true,
-    "enhance": false,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
-    "packNpmRelationList": [],
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "compileWorklet": false,
-    "uglifyFileName": false,
-    "uploadWithSourceMap": true,
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
+    "packNpmRelationList": [],
     "minifyWXSS": true,
+    "compileWorklet": false,
     "minifyWXML": true,
     "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
     "condition": false,
     "swc": false,
-    "disableSWC": true,
-    "disableUseStrict": false,
-    "useCompilerPlugins": false
-  },
-  "condition": {},
-  "editorSetting": {
-    "tabIndent": "auto",
-    "tabSize": 2
+    "disableSWC": true
   },
   "appid": "wx0fc0dabde6790e86",
+  "projectname": "quickstart-wx-cloud",
+  "libVersion": "3.14.3",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide"
+        }
+      ]
+    }
+  },
+  "compileType": "miniprogram",
+  "srcMiniprogramRoot": "miniprogram/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
   "simulatorPluginLibVersion": {}
 }
