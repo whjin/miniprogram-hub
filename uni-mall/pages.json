@@ -1,5 +1,5 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -13,5 +13,46 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"subPackages": [
+		{
+			"root": "subpkg/search",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "搜索商品"
+					}
+				}
+			]
+		},
+		{
+			"root": "subpkg/goods",
+			"pages": [
+				{
+					"path": "list",
+					"style": {
+						"navigationBarTitleText": "商品列表"
+					}
+				},
+				{
+					"path": "detail",
+					"style": {
+						"navigationBarTitleText": "商品详情"
+					}
+				}
+			]
+		},
+		{
+			"root": "subpkg/order",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "订单"
+					}
+				}
+			]
+		}
+	]
 }

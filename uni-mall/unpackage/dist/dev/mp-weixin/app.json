@@ -2,6 +2,27 @@
   "pages": [
     "pages/index/index"
   ],
+  "subPackages": [
+    {
+      "root": "subpkg/search",
+      "pages": [
+        "index"
+      ]
+    },
+    {
+      "root": "subpkg/goods",
+      "pages": [
+        "list",
+        "detail"
+      ]
+    },
+    {
+      "root": "subpkg/order",
+      "pages": [
+        "index"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
