@@ -1,0 +1,6 @@
+{
+	"devDependencies": {
+		"dayjs": "^1.11.21",
+		"mockjs": "^1.1.0"
+	}
+}

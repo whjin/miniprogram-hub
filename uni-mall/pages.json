@@ -1,19 +1,59 @@
 {
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/hot/hot",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "热搜",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/hot-video/hot-video",
+			"style": {
+				"navigationBarTitleText": "热播",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/me/me",
+			"style": {
+				"navigationBarTitleText": "我",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "UNI商城",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"backgroundColor": "#efeff4"
+		}
 	},
-	"uniIdRouter": {},
+	"tabBar": {
+		"selectedColor": "#f94d2a",
+		"list": [
+			{
+				"pagePath": "pages/hot/hot",
+				"text": "热榜",
+				"iconPath": "static/tab-icons/hot.png",
+				"selectedIconPath": "static/tab-icons/hot-active.png"
+			},
+			{
+				"pagePath": "pages/hot-video/hot-video",
+				"text": "热播",
+				"iconPath": "static/tab-icons/hot-video.png",
+				"selectedIconPath": "static/tab-icons/hot-video-active.png"
+			},
+			{
+				"pagePath": "pages/me/me",
+				"text": "我",
+				"iconPath": "static/tab-icons/me.png",
+				"selectedIconPath": "static/tab-icons/me-active.png"
+			}
+		]
+	},
 	"subPackages": [
 		{
 			"root": "subpkg/search",

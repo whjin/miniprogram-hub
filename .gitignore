@@ -1,1 +1,7 @@
 uni-mall/unpackage
+uni-mall/node_modules
+uni-mall/unpackage/
+uni-mall/.hbuilderx/
+uni-mall/.DS_Store
+uni-mall/pnpm-lock.yaml
+uni-mall/.vscode/

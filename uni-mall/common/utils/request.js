@@ -1,19 +1,23 @@
-const BASE_URL = "";
+import store from '../store';
+const BASE_URL = '';
 
 function request({ url, data, method }) {
   return new Promise((resolve, reject) => {
-    wx.request({
+    uni.request({
       url: BASE_URL + url,
-      method,
       data,
-      success: ({ data }) => {
-        if (data.success) {
+      method,
+      header: {
+        Authorization: store.state.user.token,
+      },
+      success: (res) => {
+        if (res.success) {
           resolve(res.data);
         } else {
           uni.wx.showToast({
             title: data.message,
             duration: 3000,
-            icon: "none",
+            icon: 'none',
             mask: true,
           });
           reject(data.message);
@@ -21,6 +25,9 @@ function request({ url, data, method }) {
       },
       fail: (err) => {
         reject(err);
+      },
+      complete: () => {
+        uni.hideLoading();
       },
     });
   });
