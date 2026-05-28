@@ -1,4 +1,5 @@
-import store from '../store';
+import store from '../../store';
+
 const BASE_URL = '';
 
 function request({ url, data, method }) {

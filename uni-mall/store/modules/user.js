@@ -1,5 +1,4 @@
-import { login } from 'common/api/user';
-import { act } from 'react';
+import { login } from '@/common/api/user';
 const STORAGE_KEY = 'user-info';
 const TOKEN_KEY = 'token';
 

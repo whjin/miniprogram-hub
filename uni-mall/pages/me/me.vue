@@ -1,7 +1,7 @@
 <template>
-  <div class="me-container">
+  <view class="me-container">
     <h1>个人中心</h1>
-  </div>
+  </view>
 </template>
 
 <script setup name="me">

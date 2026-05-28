@@ -1,0 +1,28 @@
+.line-clamp-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card {
+  border: 1px solid #f9f9f9;
+  border-radius: 5px;
+  margin: 12px;
+  padding: 12px;
+  box-shadow: 2px 2px 5px 1px rgba(143, 143, 143, 0.1);
+}
+
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #e5d5d5;
+}

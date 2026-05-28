@@ -1,7 +1,7 @@
 <template>
-  <div class="hot-video-container">
+  <view class="hot-video-container">
     <h1>热播剧</h1>
-  </div>
+  </view>
 </template>
 
 <script setup name="hot-video">
