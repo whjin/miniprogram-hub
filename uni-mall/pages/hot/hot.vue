@@ -12,8 +12,7 @@
         @tabClick="tabClick"
       ></my-tabs>
     </view>
-
-    <!-- <swiper
+    <swiper
       class="swiper"
       :current="currentIndex"
       :style="{ height: currentSwiperHeight + 'px' }"
@@ -26,8 +25,8 @@
           <block v-else>
             <hot-list-item
               :class="'hot-list-item-' + tabIndex"
-              v-for="(item, index) in tabData[tabIndex]"
-              :key="index"
+              v-for="(item, index) in listData[tabIndex]"
+              :key="item.id"
               :data="item"
               :ranking="index + 1"
               @click="onItemClick(item)"
@@ -35,44 +34,98 @@
           </block>
         </view>
       </swiper-item>
-    </swiper> -->
+    </swiper>
   </view>
 </template>
 
 <script setup name="hot">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, nextTick, getCurrentInstance } from 'vue';
 import { getHotTabs, getHotListFromTabType } from '@/common/api/hot';
 import { onPageScroll } from '@dcloudio/uni-app';
 
 let tabData = ref([]);
-const currentIndex = ref(0);
-const isLoading = ref(false);
-const listData = ref({});
-const currentSwiperHeight = ref(0);
-const swiperHeightData = ref({});
-const currentPageScrollTop = ref(0);
+let currentIndex = ref(0);
+let isLoading = ref(false);
+let listData = ref({});
+let currentSwiperHeight = ref(0);
+let swiperHeightData = ref({});
+let currentPageScrollTop = ref(0);
+
+const instance = getCurrentInstance();
 
 onPageScroll((e) => {
   currentPageScrollTop.value = e.scrollTop;
 });
 
 const getHotTabsData = async () => {
-  const res = await getHotTabs();
-  tabData.value = res.data;
-  // getHotListFromTab();
+  const data = await getHotTabs();
+  tabData.value = data;
+  getHotListFromTab();
 };
 
-const getHotListFromTab = async () => {
+async function getHotListFromTab() {
   isLoading.value = true;
   const id = tabData.value[currentIndex.value].id;
-  const res = await getHotListFromTabType(id);
-  console.log('11111111', res);
-  listData.value[currentIndex.value] = res.data;
-};
+  const data = await getHotListFromTabType(id);
+  listData.value[currentIndex.value] = data;
+  isLoading.value = false;
+  nextTick(async () => {
+    currentSwiperHeight.value = await getCurrentSwiperHeight();
+    swiperHeightData.value[currentIndex.value] = currentSwiperHeight.value;
+  });
+}
 
-const onToSearch = () => {};
 const tabClick = (index) => {
   currentIndex.value = index;
+  getHotListFromTab();
+};
+
+const onSwiperChange = (e) => {
+  if (currentPageScrollTop > 130) {
+    uni.pageScrollTo({
+      scrollTo: 130,
+    });
+  }
+  if (e.detail.source === 'touch') {
+    currentIndex.value = e.detail.current;
+  }
+};
+
+const onSwiperEnd = () => {
+  if (!listData.value[currentIndex.value]) {
+    getHotListFromTab();
+    return;
+  }
+  currentSwiperHeight.value = swiperHeightData.value[currentIndex.value];
+};
+
+const getCurrentSwiperHeight = () => {
+  return new Promise((resolve, reject) => {
+    let sum = 0;
+    const query = uni.createSelectorQuery().in(instance);
+    query
+      .selectAll(`.hot-list-item-${currentIndex.value}`)
+      .boundingClientRect((res) => {
+        res.forEach((item) => {
+          sum += item.height;
+        });
+        resolve(sum);
+      })
+      .exec();
+  });
+};
+
+const onToSearch = () => {
+  uni.navigateTo({
+    url: '/subpkg/pages/search-blog/search-blog',
+  });
+};
+
+const onItemClick = (item) => {
+  console.log('111111111');
+  uni.navigateTo({
+    url: `/subpkg/pages/blog-detail/blog-detail?author=${item.user_name}&articleId=${item.id}`,
+  });
 };
 
 onMounted(() => {

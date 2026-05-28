@@ -1,4 +1,4 @@
-import request from '../utils/requestMock';
+import request from '../utils/request';
 
 // 默认搜索内容
 export function getDefaultText() {

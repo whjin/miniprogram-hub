@@ -15,7 +15,7 @@ function request({ url, data, method }) {
         if (res.success) {
           resolve(res.data);
         } else {
-          uni.wx.showToast({
+          uni.showToast({
             title: data.message,
             duration: 3000,
             icon: 'none',

@@ -44,7 +44,6 @@ const searchData = ref([]);
 
 const loadDefaultText = async () => {
   const res = await getDefaultText();
-  console.log('111', res);
 };
 
 const onSearchConfirm = (val) => {

@@ -1,8 +1,8 @@
 <template>
-  <view class="item-container" @click="emit('click')">
+  <view class="item-container" @click="$emit('click')">
     <view class="item-box">
       <view class="item-box-left">
-        <hot-ranking :ranking="ranking"></hot-ranking>
+        <!-- <hot-ranking :ranking="ranking" /> -->
       </view>
       <view class="item-box-right">
         <view class="item-title line-clamp-2">{{ data.title }}</view>
@@ -10,8 +10,8 @@
         <view class="item-bottom-box">
           <text class="item-author">{{ data.nickname }}</text>
           <view class="hot-box">
-            <image src="@/static/images/hot-icon.png" class="hot-icon" />
-            <text class="hot-text">{{ data.views || hotNumber() }}</text>
+            <image class="hot-icon" src="@/static/images/hot-icon.png" />
+            <text class="hot-text">{{ hotNumber(data.views) }}</text>
           </view>
         </view>
       </view>

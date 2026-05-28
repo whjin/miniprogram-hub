@@ -109,7 +109,6 @@ function tabToIndex() {
     left: tabList.value[index]._slider.left,
   };
   scrollLeft.value = index * defaultConfig.value.underLineWidth;
-  console.log(scrollLeft.value);
 }
 
 watch(

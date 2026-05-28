@@ -15,11 +15,9 @@ const props = defineProps({
   },
 });
 
-const curRanking = ref(props.ranking);
-
 const getRankingBg = computed(() => {
-  if (curRanking.value <= 3) {
-    return require(`@/static/images/ranking-${curRanking.value}.png`);
+  if (props.ranking <= 3) {
+    return require(`@/static/images/ranking-${this.ranking}.png`);
   }
   return require('@/static/images/ranking-other.png');
 });
